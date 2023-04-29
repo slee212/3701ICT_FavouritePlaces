@@ -14,6 +14,7 @@
 		2B9DF04629FCEF320029E53A /* FavouritePlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9DF04529FCEF320029E53A /* FavouritePlacesTests.swift */; };
 		2B9DF05029FCEF320029E53A /* FavouritePlacesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9DF04F29FCEF320029E53A /* FavouritePlacesUITests.swift */; };
 		2B9DF05229FCEF320029E53A /* FavouritePlacesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9DF05129FCEF320029E53A /* FavouritePlacesUITestsLaunchTests.swift */; };
+		2B9DF05F29FCF22E0029E53A /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9DF05E29FCF22E0029E53A /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		2B9DF04B29FCEF320029E53A /* FavouritePlacesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavouritePlacesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B9DF04F29FCEF320029E53A /* FavouritePlacesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesUITests.swift; sourceTree = "<group>"; };
 		2B9DF05129FCEF320029E53A /* FavouritePlacesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2B9DF05E29FCF22E0029E53A /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				2B9DF03629FCEF300029E53A /* ContentView.swift */,
 				2B9DF03829FCEF310029E53A /* Assets.xcassets */,
 				2B9DF03A29FCEF310029E53A /* Preview Content */,
+				2B9DF05E29FCF22E0029E53A /* DataModel.swift */,
 			);
 			path = FavouritePlaces;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			files = (
 				2B9DF03729FCEF300029E53A /* ContentView.swift in Sources */,
 				2B9DF03529FCEF300029E53A /* FavouritePlacesApp.swift in Sources */,
+				2B9DF05F29FCF22E0029E53A /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
