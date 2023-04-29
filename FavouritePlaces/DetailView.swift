@@ -5,7 +5,7 @@
 //  Created by Samuel Lee on 29/4/2023.
 //
 
-import CoreData
+
 import SwiftUI
 
 struct DetailView: View {
@@ -24,12 +24,23 @@ struct DetailView: View {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFit()
+                } else if(image == "photo") {
+                    Image(systemName: image)
                 }
                 
                 TextField("URL:", text: $image)
-                TextField("Description:", text: $desc)
-                TextField("Longitude:", text: $longitude)
-                TextField("Latitude:", text: $latitude)
+                HStack {
+                    Text("Description:")
+                    TextField("Description", text: $desc)
+                }
+                HStack {
+                    Text("Longitude:")
+                    TextField("Longitude", text: $longitude)
+                }
+                HStack {
+                    Text("Latitude:")
+                    TextField("Latitude", text: $latitude)
+                }
             }
             
         }.navigationTitle(name)

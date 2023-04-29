@@ -26,6 +26,8 @@ struct ContentView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 40, height: 40)
+                            } else if(p.image == "photo") {
+                                Image(systemName: p.image)
                             }
                             
                             Text(p.name)
