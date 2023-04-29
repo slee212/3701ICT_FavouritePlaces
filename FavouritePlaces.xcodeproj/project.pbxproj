@@ -50,6 +50,7 @@
 		2B9DF05E29FCF22E0029E53A /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		2B9DF06029FCFD6E0029E53A /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		2B9DF06229FD00530029E53A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		2BB8896D29FD22D1009500CD /* ReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +108,7 @@
 				2B9DF05E29FCF22E0029E53A /* DataModel.swift */,
 				2B9DF06029FCFD6E0029E53A /* EditView.swift */,
 				2B9DF06229FD00530029E53A /* DetailView.swift */,
+				2BB8896D29FD22D1009500CD /* ReadMe.md */,
 			);
 			path = FavouritePlaces;
 			sourceTree = "<group>";

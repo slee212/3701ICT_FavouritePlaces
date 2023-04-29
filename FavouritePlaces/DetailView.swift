@@ -9,12 +9,13 @@
 import SwiftUI
 
 struct DetailView: View {
-    @Binding var place: Place
+    @Binding var place: DataModel
     @State var image: String = ""
     @State var name: String = ""
     @State var desc: String = ""
     @State var longitude: String = ""
     @State var latitude: String = ""
+    var count: Int
     var body: some View {
         EditView(item: $name)
         HStack {
@@ -46,18 +47,19 @@ struct DetailView: View {
         }.navigationTitle(name)
             .navigationBarItems(trailing: EditButton())
             .onAppear {
-                image = place.image
-                name = place.name
-                desc = place.desc
-                longitude = place.longitude
-                latitude = place.latitude
+                image = place.locations[count].image
+                name = place.locations[count].name
+                desc = place.locations[count].desc
+                longitude = place.locations[count].longitude
+                latitude = place.locations[count].latitude
             }
             .onDisappear() {
-                place.image = image
-                place.name = name
-                place.desc = desc
-                place.longitude = longitude
-                place.latitude = latitude
+                place.locations[count].image = image
+                place.locations[count].name = name
+                place.locations[count].desc = desc
+                place.locations[count].longitude = longitude
+                place.locations[count].latitude = latitude
+                place.save()
                 
             }
     }

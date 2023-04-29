@@ -8,18 +8,15 @@
 import CoreData
 import SwiftUI
 
-let defaultImage = Image(systemName: "photo").resizable()
-var downloadImages :[URL:Image] = [:]
-
 struct ContentView: View {
     @Binding var model: DataModel
     var body: some View {
         NavigationView() {
             VStack {
                 List {
-                    ForEach($model.locations, id:\.self) {
-                        $p in
-                        NavigationLink(destination: DetailView(place: $p)) {
+                    ForEach(model.locations.enumerated().map { $0 }, id:\.element) {
+                        (index, p) in
+                        NavigationLink(destination: DetailView(place: $model, count: index)) {
                             if let imageUrl = URL(string: p.image), let imageData = try?
                                 Data(contentsOf: imageUrl), let uiImage = UIImage(data: imageData) {
                                 Image(uiImage: uiImage)
@@ -51,6 +48,7 @@ struct ContentView: View {
                                                     Text("+")
                                                 },
                                         trailing: EditButton())
+                    .onAppear{model.save()}
             }
         }
         .padding()
