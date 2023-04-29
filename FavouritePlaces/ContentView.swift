@@ -5,7 +5,11 @@
 //  Created by Samuel Lee on 29/4/2023.
 //
 
+import CoreData
 import SwiftUI
+
+let defaultImage = Image(systemName: "photo").resizable()
+var downloadImages :[URL:Image] = [:]
 
 struct ContentView: View {
     @Binding var model: DataModel
@@ -16,7 +20,14 @@ struct ContentView: View {
                     ForEach($model.locations, id:\.self) {
                         $p in
                         NavigationLink(destination: DetailView(place: $p)) {
-                            Image(systemName: "photo")
+                            if let imageUrl = URL(string: p.image), let imageData = try?
+                                Data(contentsOf: imageUrl), let uiImage = UIImage(data: imageData) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 40, height: 40)
+                            }
+                            
                             Text(p.name)
                         }
                     }

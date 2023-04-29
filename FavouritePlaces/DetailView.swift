@@ -5,6 +5,7 @@
 //  Created by Samuel Lee on 29/4/2023.
 //
 
+import CoreData
 import SwiftUI
 
 struct DetailView: View {
@@ -15,12 +16,21 @@ struct DetailView: View {
     @State var longitude: String = ""
     @State var latitude: String = ""
     var body: some View {
-        EditView()
-        VStack {
-            TextField("URL:", text: $image)
-            TextField("Description:", text: $desc)
-            TextField("Longitude:", text: $longitude)
-            TextField("Latitude:", text: $latitude)
+        EditView(item: $name)
+        HStack {
+            List {
+                if let imageUrl = URL(string: image), let imageData = try?
+                    Data(contentsOf: imageUrl), let uiImage = UIImage(data: imageData) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                }
+                
+                TextField("URL:", text: $image)
+                TextField("Description:", text: $desc)
+                TextField("Longitude:", text: $longitude)
+                TextField("Latitude:", text: $latitude)
+            }
             
         }.navigationTitle(name)
             .navigationBarItems(trailing: EditButton())
@@ -37,6 +47,7 @@ struct DetailView: View {
                 place.desc = desc
                 place.longitude = longitude
                 place.latitude = latitude
+                
             }
     }
 }
