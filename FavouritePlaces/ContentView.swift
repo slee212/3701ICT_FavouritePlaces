@@ -7,27 +7,30 @@
 
 import SwiftUI
 
-var places = [["doc.text.image.fill", "Brisbane"], ["doc.text.image.fill", "Gold Coast"], ["doc.text.image.fill", "Melbourne"]]
-
 struct ContentView: View {
+    @Binding var model: DataModel
     var body: some View {
-        VStack {
-            List {
-                ForEach(places, id:\.self) {
-                    place in
-                    HStack {
-                        Image(systemName: "doc.text.image.fill")
-                        Text(place[1])
+        NavigationView() {
+            VStack {
+                List {
+                    ForEach(model.locations, id:\.self) {
+                        p in
+                        HStack {
+                            Image(systemName: p.image)
+                            Text(p.name)
+                        }
                     }
-                }
+                }.navigationTitle("My Favourite Places")
+                    .navigationBarItems(leading:
+                                            Button(
+                                                action: {
+                                                    model.locations.append(Place(image: "photo", name: "New Place"))
+                                                }) {
+                                                    Text("+")
+                                                },
+                                        trailing: EditButton())
             }
         }
         .padding()
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
