@@ -20,6 +20,14 @@ struct ContentView: View {
                             Text(p.name)
                         }
                     }
+                    .onDelete { idx in
+                        model.locations.remove(atOffsets: idx)
+                        //model.save()
+                    }
+                    .onMove { idx, i in
+                        model.locations.move(fromOffsets: idx, toOffset: i)
+                        //model.save()
+                    }
                 }.navigationTitle("My Favourite Places")
                     .navigationBarItems(leading:
                                             Button(
