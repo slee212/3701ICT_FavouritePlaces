@@ -13,10 +13,10 @@ struct ContentView: View {
         NavigationView() {
             VStack {
                 List {
-                    ForEach(model.locations, id:\.self) {
-                        p in
-                        HStack {
-                            Image(systemName: p.image)
+                    ForEach($model.locations, id:\.self) {
+                        $p in
+                        NavigationLink(destination: DetailView(place: $p)) {
+                            Image(systemName: "photo")
                             Text(p.name)
                         }
                     }
@@ -32,7 +32,7 @@ struct ContentView: View {
                     .navigationBarItems(leading:
                                             Button(
                                                 action: {
-                                                    model.locations.append(Place(image: "photo", name: "New Place"))
+                                                    model.locations.append(Place(image: "photo", name: "New Place", desc: "", longitude: "", latitude: ""))
                                                     model.save()
                                                 }) {
                                                     Text("+")
