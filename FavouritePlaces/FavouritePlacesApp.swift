@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct FavouritePlacesApp: App {
-    @State var model:DataModel = DataModel(locations: testLocations)
+    @State var model:DataModel = DataModel()
     var body: some Scene {
         WindowGroup {
             ContentView(model: $model)

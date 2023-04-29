@@ -16,6 +16,7 @@
 		2B9DF05229FCEF320029E53A /* FavouritePlacesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9DF05129FCEF320029E53A /* FavouritePlacesUITestsLaunchTests.swift */; };
 		2B9DF05F29FCF22E0029E53A /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9DF05E29FCF22E0029E53A /* DataModel.swift */; };
 		2B9DF06129FCFD6E0029E53A /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9DF06029FCFD6E0029E53A /* EditView.swift */; };
+		2B9DF06329FD00530029E53A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9DF06229FD00530029E53A /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		2B9DF05129FCEF320029E53A /* FavouritePlacesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2B9DF05E29FCF22E0029E53A /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		2B9DF06029FCFD6E0029E53A /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		2B9DF06229FD00530029E53A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				2B9DF03A29FCEF310029E53A /* Preview Content */,
 				2B9DF05E29FCF22E0029E53A /* DataModel.swift */,
 				2B9DF06029FCFD6E0029E53A /* EditView.swift */,
+				2B9DF06229FD00530029E53A /* DetailView.swift */,
 			);
 			path = FavouritePlaces;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				2B9DF03729FCEF300029E53A /* ContentView.swift in Sources */,
 				2B9DF03529FCEF300029E53A /* FavouritePlacesApp.swift in Sources */,
 				2B9DF06129FCFD6E0029E53A /* EditView.swift in Sources */,
+				2B9DF06329FD00530029E53A /* DetailView.swift in Sources */,
 				2B9DF05F29FCF22E0029E53A /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

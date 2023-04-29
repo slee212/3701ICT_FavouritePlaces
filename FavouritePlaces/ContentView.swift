@@ -22,17 +22,18 @@ struct ContentView: View {
                     }
                     .onDelete { idx in
                         model.locations.remove(atOffsets: idx)
-                        //model.save()
+                        model.save()
                     }
                     .onMove { idx, i in
                         model.locations.move(fromOffsets: idx, toOffset: i)
-                        //model.save()
+                        model.save()
                     }
                 }.navigationTitle("My Favourite Places")
                     .navigationBarItems(leading:
                                             Button(
                                                 action: {
                                                     model.locations.append(Place(image: "photo", name: "New Place"))
+                                                    model.save()
                                                 }) {
                                                     Text("+")
                                                 },
