@@ -7,6 +7,8 @@
 
 
 import SwiftUI
+import CoreData
+import CoreLocation
 import MapKit
 
 struct DetailView: View {
@@ -29,8 +31,10 @@ struct DetailView: View {
         EditView(item: $name)
         HStack {
             List {
-                if let imageUrl = URL(string: image) {
-                    ImageView(url: imageUrl)
+                HStack{
+                    if let imageUrl = URL(string: image) {
+                        ImageView(url: imageUrl)
+                    }
                 }
                 
                 TextField("URL:", text: $image)
@@ -39,7 +43,8 @@ struct DetailView: View {
                     TextField("Description", text: $desc)
                 }
                 HStack{
-                    
+                    Map(coordinateRegion: $region)
+                        .frame(height: 300)
                 }
                 HStack {
                     Text("Longitude:")
@@ -50,8 +55,14 @@ struct DetailView: View {
                     TextField("Latitude", value: $latitude, formatter: decimalFormatter)
                 }
             }
-            
-        }.navigationTitle(name)
+        }
+        .onChange(of: longitude) { newValue in
+            updateMapRegion()
+        }
+        .onChange(of: latitude) { newValue in
+            updateMapRegion()
+        }
+        .navigationTitle(name)
             .navigationBarItems(trailing: EditButton())
             .onAppear {
                 image = place.locations[count].image
@@ -59,6 +70,7 @@ struct DetailView: View {
                 desc = place.locations[count].desc
                 longitude = place.locations[count].longitude
                 latitude = place.locations[count].latitude
+                updateMapRegion()
             }
             .onDisappear() {
                 place.locations[count].image = image
@@ -69,5 +81,8 @@ struct DetailView: View {
                 place.save()
                 
             }
+    }
+    private func updateMapRegion() {
+        region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     }
 }

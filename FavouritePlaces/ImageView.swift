@@ -19,7 +19,7 @@ struct ImageView: View {
                     .scaledToFit()
             } else {
                 // Display a placeholder while the image is loading
-                Text("Loading...")
+                Image(systemName: "photo")
             }
         }
         .onAppear {

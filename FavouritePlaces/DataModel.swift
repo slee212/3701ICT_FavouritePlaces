@@ -52,7 +52,7 @@ struct DataModel: Codable {
 }
 
 var testLocations = [
-    Place(image: "photo", name: "Brisbane", desc: "Capital of Queensland", longitude: 153.0260, latitude: 27.4705),
-    Place(image: "photo", name: "Gold Coast", desc: "Tourist location in Queensland", longitude: 153.4000, latitude: 28.0167),
-    Place(image: "photo", name: "Sydney", desc: "Capital of New South Whales", longitude: 33.8688, latitude: 151.2093),
+    Place(image: "photo", name: "Brisbane", desc: "Capital of Queensland", longitude: 153.0260, latitude: -27.4705),
+    Place(image: "photo", name: "Gold Coast", desc: "Tourist location in Queensland", longitude: 153.4000, latitude: -28.0167),
+    Place(image: "photo", name: "Sydney", desc: "Capital of New South Whales", longitude: 151.2093, latitude: -33.8688),
 ]
