@@ -11,8 +11,8 @@ struct Place: Hashable, Codable {
     var image: String
     var name: String
     var desc: String
-    var longitude: String
-    var latitude: String
+    var longitude: Double
+    var latitude: Double
 }
 
 func getFile() -> URL? {
@@ -52,7 +52,7 @@ struct DataModel: Codable {
 }
 
 var testLocations = [
-    Place(image: "photo", name: "Brisbane", desc: "Capital of Queensland", longitude: "27.47", latitude: "153.03"),
-    Place(image: "photo", name: "Gold Coast", desc: "Tourist location in Queensland", longitude: "28.02", latitude: "153.40"),
-    Place(image: "photo", name: "Sydney", desc: "Capital of New South Whales", longitude: "33.87", latitude: "151.21"),
+    Place(image: "photo", name: "Brisbane", desc: "Capital of Queensland", longitude: 153.0260, latitude: 27.4705),
+    Place(image: "photo", name: "Gold Coast", desc: "Tourist location in Queensland", longitude: 153.4000, latitude: 28.0167),
+    Place(image: "photo", name: "Sydney", desc: "Capital of New South Whales", longitude: 33.8688, latitude: 151.2093),
 ]

@@ -7,15 +7,24 @@
 
 
 import SwiftUI
+import MapKit
 
 struct DetailView: View {
     @Binding var place: DataModel
     @State var image: String = ""
     @State var name: String = ""
     @State var desc: String = ""
-    @State var longitude: String = ""
-    @State var latitude: String = ""
+    @State var longitude: Double = 0.0
+    @State var latitude: Double = 0.0
+    @State var region: MKCoordinateRegion = MKCoordinateRegion()
     var count: Int
+    
+    let decimalFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    } ()
+    
     var body: some View {
         EditView(item: $name)
         HStack {
@@ -34,13 +43,16 @@ struct DetailView: View {
                     Text("Description:")
                     TextField("Description", text: $desc)
                 }
+                HStack{
+                    
+                }
                 HStack {
                     Text("Longitude:")
-                    TextField("Longitude", text: $longitude)
+                    TextField("Longitude", value: $longitude, formatter: decimalFormatter)
                 }
                 HStack {
                     Text("Latitude:")
-                    TextField("Latitude", text: $latitude)
+                    TextField("Latitude", value: $latitude, formatter: decimalFormatter)
                 }
             }
             
