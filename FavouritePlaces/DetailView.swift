@@ -29,13 +29,8 @@ struct DetailView: View {
         EditView(item: $name)
         HStack {
             List {
-                if let imageUrl = URL(string: image), let imageData = try?
-                    Data(contentsOf: imageUrl), let uiImage = UIImage(data: imageData) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFit()
-                } else if(image == "photo") {
-                    Image(systemName: image)
+                if let imageUrl = URL(string: image) {
+                    ImageView(url: imageUrl)
                 }
                 
                 TextField("URL:", text: $image)

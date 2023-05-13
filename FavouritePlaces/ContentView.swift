@@ -17,14 +17,9 @@ struct ContentView: View {
                     ForEach(model.locations.enumerated().map { $0 }, id:\.element) {
                         (index, p) in
                         NavigationLink(destination: DetailView(place: $model, count: index)) {
-                            if let imageUrl = URL(string: p.image), let imageData = try?
-                                Data(contentsOf: imageUrl), let uiImage = UIImage(data: imageData) {
-                                Image(uiImage: uiImage)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 40, height: 40)
-                            } else if(p.image == "photo") {
-                                Image(systemName: p.image)
+                            if let imageUrl = URL(string: model.locations[index].image) {
+                                ImageView(url: imageUrl)
+                                    .frame(width: 40, height: 40) // Setting the frame size
                             }
                             
                             Text(p.name)
@@ -42,7 +37,7 @@ struct ContentView: View {
                     .navigationBarItems(leading:
                                             Button(
                                                 action: {
-                                                    model.locations.append(Place(image: "photo", name: "New Place", desc: "", longitude: "", latitude: ""))
+                                                    model.locations.append(Place(image: "photo", name: "New Place", desc: "", longitude: 0.0, latitude: 0.0))
                                                     model.save()
                                                 }) {
                                                     Text("+")
