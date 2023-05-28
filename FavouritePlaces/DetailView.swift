@@ -10,19 +10,21 @@ import CoreData
 import CoreLocation
 import MapKit
 
-import SwiftUI
-
+/// The view for individual locations, loaded when a navigation link is clicked on the ContentView. Provides a more detailed overview of a location including name and description as a few examples.
 struct DetailView: View {
     @Binding var place: DataModel
+    /// Index used to get the information from the DataModel.
     var count: Int
     
     @State private var sunsetTime: String = ""
     @State private var sunriseTime: String = ""
     @State private var mapSnapshot: UIImage?
     
+    /// Main body of the applicaiton.
     var body: some View {
         NavigationView {
             VStack {
+                // View for editing the place's name
                 EditView(item: $place.locations[count].name)
                 
                 List {
@@ -33,13 +35,16 @@ struct DetailView: View {
                         }
                     }
                     
+                    // Text field for editing the place's image URL
                     TextField("URL:", text: $place.locations[count].image)
                     
                     HStack {
                         Text("Description:")
+                        // Text field for editing the place's description
                         TextField("Description", text: $place.locations[count].desc)
                     }
                     
+                    // Navigation link to view location details
                     NavigationLink(destination: LocationView(place: $place, count: count)) {
                         HStack {
                             if let snapshot = mapSnapshot {
@@ -58,6 +63,7 @@ struct DetailView: View {
                     }
                     .foregroundColor(.primary)
                     
+                    // Display sunset and sunrise times if available, or fetch them
                     if !sunsetTime.isEmpty && !sunriseTime.isEmpty {
                         HStack {
                             Image(systemName: "sunset.fill")
@@ -88,6 +94,9 @@ struct DetailView: View {
         }
     }
     
+    // Sunset and Sunrise Times
+    
+    /// Fetches sunset and sunrise times for the location using an API request.
     private func fetchSunsetSunriseTimes() {
         let location = place.locations[count]
         let urlStr = "https://api.sunrise-sunset.org/json?lat=\(location.latitude)&lng=\(location.longitude)&formatted=0"
@@ -109,6 +118,7 @@ struct DetailView: View {
         }
     }
     
+    /// Generates a map snapshot of the location using MapKit.
     private func generateMapSnapshot() {
         let location = place.locations[count]
         let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
@@ -130,6 +140,7 @@ struct DetailView: View {
         }
     }
     
+    /// Formats the given time string into a user-friendly format.
     private func formatTime(_ timeString: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"

@@ -7,10 +7,12 @@
 
 import SwiftUI
 
+/// A view for asynchronously loading and displaying an image from a URL.
 struct ImageView: View {
     @State var uiImage: UIImage? = nil
     let url: URL
 
+    /// Main body of the application.
     var body: some View {
         Group {
             if let uiImage = uiImage {
@@ -27,6 +29,7 @@ struct ImageView: View {
         }
     }
 
+    /// Fetches the image from the given URL.
     private func fetchImage() {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let data = data, let image = UIImage(data: data) {

@@ -10,8 +10,10 @@ import SwiftUI
 import CoreLocation
 import MapKit
 
+/// Gives more detailed information about a location, including its longitude, latitude, a map of the location and the name of the location.
 struct LocationView: View {
     @Binding var place: DataModel
+    /// Used as an index to get the location's information from the DataModel.
     var count: Int
     
     @State private var editedName: String = ""
@@ -20,6 +22,7 @@ struct LocationView: View {
     @State private var isEditing: Bool = false
     @State private var displayedLocationName: String = ""
     
+    /// Formats the longitude and latitude variables.
     let decimalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -37,6 +40,7 @@ struct LocationView: View {
         _displayedLocationName = State(initialValue: initialLocation.name)
     }
     
+    /// Main body of the application.
     var body: some View {
         VStack {
             if isEditing {
