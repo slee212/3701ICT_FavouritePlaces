@@ -18,16 +18,18 @@ struct DetailView: View {
     
     @State private var sunsetTime: String = ""
     @State private var sunriseTime: String = ""
+    @State private var mapSnapshot: UIImage?
     
     var body: some View {
-        VStack {
-            EditView(item: $place.locations[count].name)
-            
-            HStack {
+        NavigationView {
+            VStack {
+                EditView(item: $place.locations[count].name)
+                
                 List {
                     HStack {
                         if let imageUrl = URL(string: place.locations[count].image) {
                             ImageView(url: imageUrl)
+                                .frame(width: 32, height: 32)
                         }
                     }
                     
@@ -40,9 +42,21 @@ struct DetailView: View {
                     
                     NavigationLink(destination: LocationView(place: $place, count: count)) {
                         HStack {
+                            if let snapshot = mapSnapshot {
+                                Image(uiImage: snapshot)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 32, height: 32)
+                            } else {
+                                Image(systemName: "map")
+                                    .foregroundColor(.primary)
+                                    .frame(width: 32, height: 32)
+                            }
+                            
                             Text("View Location Details")
                         }
                     }
+                    .foregroundColor(.primary)
                     
                     if !sunsetTime.isEmpty && !sunriseTime.isEmpty {
                         HStack {
@@ -68,6 +82,9 @@ struct DetailView: View {
                     }
                 }
             }
+            .onAppear {
+                generateMapSnapshot()
+            }
         }
     }
     
@@ -89,6 +106,27 @@ struct DetailView: View {
                     }
                 }
             }.resume()
+        }
+    }
+    
+    private func generateMapSnapshot() {
+        let location = place.locations[count]
+        let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        
+        let options = MKMapSnapshotter.Options()
+        options.region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 5000, longitudinalMeters: 5000)
+        options.size = CGSize(width: 150, height: 150)
+        options.scale = UIScreen.main.scale
+        
+        let snapshotter = MKMapSnapshotter(options: options)
+        snapshotter.start { snapshot, error in
+            guard let snapshot = snapshot, error == nil else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                mapSnapshot = snapshot.image
+            }
         }
     }
     
