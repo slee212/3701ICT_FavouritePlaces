@@ -45,33 +45,23 @@ struct LocationView: View {
         VStack {
             if isEditing {
                 TextField("Location Name", text: $editedName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
             } else {
-                Text(editedName)
+                Text("Map of \(editedName)")
                     .font(.title)
-                    .padding()
             }
-            
-            TextField("Longitude", value: $editedLongitude, formatter: decimalFormatter)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-                .disabled(!isEditing)
-            
-            TextField("Latitude", value: $editedLatitude, formatter: decimalFormatter)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-                .disabled(!isEditing)
-            
-            Text("Current Location: \(displayedLocationName)")
-                .font(.headline)
-                .padding()
-            
+
             Map(coordinateRegion: coordinateRegion)
                 .frame(height: 300)
                 .onAppear {
                     updateDisplayedLocationName()
                 }
+            List{
+                TextField("Longitude", value: $editedLongitude, formatter: decimalFormatter)
+                    .disabled(!isEditing)
+                
+                TextField("Latitude", value: $editedLatitude, formatter: decimalFormatter)
+                    .disabled(!isEditing)
+            }
         }
         .navigationBarItems(trailing: editButton)
         .onChange(of: editedName) { _ in
@@ -86,12 +76,7 @@ struct LocationView: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                backButton
-            }
         }
-    }
     
     private var coordinateRegion: Binding<MKCoordinateRegion> {
         Binding<MKCoordinateRegion>(
