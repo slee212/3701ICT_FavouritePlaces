@@ -18,6 +18,7 @@
 		2B9DF06129FCFD6E0029E53A /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9DF06029FCFD6E0029E53A /* EditView.swift */; };
 		2B9DF06329FD00530029E53A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9DF06229FD00530029E53A /* DetailView.swift */; };
 		2BEC92EF2A0F3F70000D6C16 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEC92EE2A0F3F70000D6C16 /* ImageView.swift */; };
+		CE77CDFE2A234BAE0078A77D /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE77CDFD2A234BAE0078A77D /* LocationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		2B9DF06229FD00530029E53A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		2BB8896D29FD22D1009500CD /* ReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 		2BEC92EE2A0F3F70000D6C16 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		CE77CDFD2A234BAE0078A77D /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				2B9DF06229FD00530029E53A /* DetailView.swift */,
 				2BB8896D29FD22D1009500CD /* ReadMe.md */,
 				2BEC92EE2A0F3F70000D6C16 /* ImageView.swift */,
+				CE77CDFD2A234BAE0078A77D /* LocationView.swift */,
 			);
 			path = FavouritePlaces;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				2B9DF03729FCEF300029E53A /* ContentView.swift in Sources */,
 				2B9DF03529FCEF300029E53A /* FavouritePlacesApp.swift in Sources */,
 				2B9DF06129FCFD6E0029E53A /* EditView.swift in Sources */,
+				CE77CDFE2A234BAE0078A77D /* LocationView.swift in Sources */,
 				2B9DF06329FD00530029E53A /* DetailView.swift in Sources */,
 				2B9DF05F29FCF22E0029E53A /* DataModel.swift in Sources */,
 			);
